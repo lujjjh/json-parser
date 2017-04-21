@@ -1,5 +1,5 @@
 {
-  "name": "json-parser",
+  "name": "json-parser-plus",
   "version": "0.1.0",
   "description": "Yet another JSON parser.",
   "main": "index.js",
