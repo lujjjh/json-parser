@@ -1,0 +1,29 @@
+{
+  "name": "json-parser",
+  "version": "0.1.0",
+  "description": "Yet another JSON parser.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lujjjh/json-parser.git"
+  },
+  "keywords": [
+    "json",
+    "parser"
+  ],
+  "author": "lujjjh <lujjjh@gmail.com> (https://ljh.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lujjjh/json-parser/issues"
+  },
+  "homepage": "https://github.com/lujjjh/json-parser#readme",
+  "devDependencies": {
+    "ava": "^0.19.1"
+  }
+}
