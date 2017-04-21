@@ -84,6 +84,7 @@
     formatValue: function (node, indent) {
       switch (node.type) {
         case 'String':
+          return JSON.stringify(JSON.parse(node.value));
         case 'Number':
         case 'True':
         case 'False':
