@@ -106,7 +106,7 @@
           this.formatValue(memberOrElement.value, indent).replace(/\n/g, '\n' + indent) :
           this.formatValue(memberOrElement, indent).replace(/\n/g, '\n' + indent);
         output += value;
-        if (++i < membersOrElements.length) output += ', \n';
+        if (++i < membersOrElements.length) output += ',\n';
       }
       output += '\n' + end;
       return output;
