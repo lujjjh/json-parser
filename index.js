@@ -72,7 +72,9 @@
     parse: function (input) {
       this.tokens = new JSONLexer().tokenize(input);
       this.i = 0;
-      return this.value();
+      var value = this.value();
+      if (!value) throw new TypeError('failed to parse JSON, expect value');
+      return value;
     },
 
     format: function (input) {
