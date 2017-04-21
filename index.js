@@ -75,6 +75,40 @@
       return this.value();
     },
 
+    format: function (input) {
+      var indent = arguments.length > 1 ? arguments[1] : '  ';
+      var ast = this.parse(input);
+      return this.formatValue(ast, indent);
+    },
+
+    formatValue: function (node, indent) {
+      switch (node.type) {
+        case 'String':
+        case 'Number':
+        case 'True':
+        case 'False':
+        case 'Null':
+          return node.value;
+      }
+      var begin = node.type === 'Object' ? '{' : '[';
+      var end = node.type === 'Object' ? '}' : ']';
+      var membersOrElements = node.value;
+      if (!membersOrElements.length) return begin + end;
+      var output = begin + '\n';
+      for (var i = 0; i < membersOrElements.length; ) {
+        output += indent;
+        var memberOrElement = membersOrElements[i];
+        if (node.type === 'Object') output += memberOrElement.key.value + ': ';
+        var value = node.type === 'Object' ?
+          this.formatValue(memberOrElement.value, indent).replace(/\n/g, '\n' + indent) :
+          this.formatValue(memberOrElement, indent).replace(/\n/g, '\n' + indent);
+        output += value;
+        if (++i < membersOrElements.length) output += ', \n';
+      }
+      output += '\n' + end;
+      return output;
+    },
+
     value: function () {
       return this.string() || this.number() || this.object() || this.array() ||
         this['true']() || this['false']() || this['null']();
